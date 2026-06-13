@@ -48,11 +48,8 @@ export default function Footer() {
         </p>
 
         <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault()
-            alert('CV download coming soon!')
-          }}
+          href="/ALI BIN HUSSAIN CV.pdf"
+          download
           className="font-body text-[13px] font-medium text-[#9EB356] hover:underline transition-all duration-300"
         >
           Download CV
