@@ -107,6 +107,20 @@ export default function Contact() {
             <div className="w-full h-[1px] bg-white/10 my-6" />
 
             <div className="contact-item opacity-0">
+              <span className="text-label text-[#8A8A8A] block mb-2">Portfolio</span>
+              <a
+                href="https://drive.google.com/drive/folders/1J6J2HYjEX44uXurYqi-a15yQgUkpx9aO?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-body text-[16px] md:text-[18px] text-white hover:text-[#9EB356] transition-colors duration-300 break-all"
+              >
+                checkout portfolio
+              </a>
+            </div>
+
+            <div className="w-full h-[1px] bg-white/10 my-6" />
+
+            <div className="contact-item opacity-0">
               <span className="text-label text-[#8A8A8A] block mb-2">Phone</span>
               <a
                 href="tel:+923044010669"
