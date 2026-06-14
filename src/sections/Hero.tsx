@@ -66,10 +66,7 @@ export default function Hero() {
     return () => { tl.kill() }
   }, [])
 
-  const handleCtaClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    document.querySelector('#work')?.scrollIntoView({ behavior: 'smooth' })
-  }
+
 
   return (
     <section
@@ -114,8 +111,8 @@ export default function Hero() {
         {/* CTA */}
         <a
           ref={ctaRef}
-          href="#work"
-          onClick={handleCtaClick}
+          href="/ALI BIN HUSSAIN CV.pdf"
+          download
           className="inline-block font-body text-[14px] font-semibold px-9 py-[14px] rounded-full transition-all duration-300 hover:scale-[1.04] opacity-0"
           style={{
             background: '#9EB356',
@@ -128,7 +125,7 @@ export default function Hero() {
             e.currentTarget.style.background = '#9EB356'
           }}
         >
-          View My Work
+          Download CV
         </a>
       </div>
 

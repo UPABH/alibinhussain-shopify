@@ -1,8 +1,47 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Copy, Check } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
+
+function CopyButton({ value }: { value: string }) {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    try {
+      await navigator.clipboard.writeText(value)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1500)
+    } catch {
+      // Fallback for older browsers
+      const textarea = document.createElement('textarea')
+      textarea.value = value
+      textarea.style.position = 'fixed'
+      textarea.style.opacity = '0'
+      document.body.appendChild(textarea)
+      textarea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textarea)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1500)
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      className="ml-3 p-2 rounded-full border border-white/10 text-white/50 hover:text-[#9EB356] hover:border-[#9EB356]/50 transition-all duration-300 shrink-0"
+      aria-label={`Copy ${value}`}
+      title="Copy"
+    >
+      {copied ? <Check size={16} /> : <Copy size={16} />}
+    </button>
+  )
+}
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -53,6 +92,12 @@ export default function Contact() {
     return () => ctx.revert()
   }, [])
 
+  const email = 'alibinhussain6363@gmail.com'
+  const linkedIn = 'https://linkedin.com/in/ali-hussain-10a026182'
+  const portfolio = 'https://drive.google.com/drive/folders/1J6J2HYjEX44uXurYqi-a15yQgUkpx9aO?usp=sharing'
+  const phone = '+92 304 4010669'
+  const whatsappNumber = '923044010669'
+
   return (
     <section
       id="contact"
@@ -82,52 +127,71 @@ export default function Contact() {
           <div ref={rightRef} className="md:w-[50%] flex flex-col justify-end">
             <div className="contact-item opacity-0">
               <span className="text-label text-[#8A8A8A] block mb-2">Email</span>
-              <a
-                href="mailto:alibinhussain6363@gmail.com"
-                className="font-body text-[20px] md:text-[24px] font-medium text-white hover:text-[#9EB356] transition-colors duration-300 break-all"
-              >
-                alibinhussain6363@gmail.com
-              </a>
+              <div className="flex items-center">
+                <a
+                  href={`mailto:${email}`}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    window.open(`mailto:${email}`, '_blank')
+                  }}
+                  className="font-body text-[20px] md:text-[24px] font-medium text-white hover:text-[#9EB356] transition-colors duration-300 break-all"
+                >
+                  {email}
+                </a>
+                <CopyButton value={email} />
+              </div>
             </div>
 
             <div className="w-full h-[1px] bg-white/10 my-6" />
 
             <div className="contact-item opacity-0">
               <span className="text-label text-[#8A8A8A] block mb-2">LinkedIn</span>
-              <a
-                href="https://linkedin.com/in/ali-hussain-10a026182"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-body text-[16px] md:text-[18px] text-white hover:text-[#9EB356] transition-colors duration-300 break-all"
-              >
-                linkedin.com/in/ali-hussain-10a026182
-              </a>
+              <div className="flex items-center">
+                <a
+                  href={linkedIn}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-body text-[16px] md:text-[18px] text-white hover:text-[#9EB356] transition-colors duration-300 break-all"
+                >
+                  linkedin.com/in/ali-hussain-10a026182
+                </a>
+                <CopyButton value={linkedIn} />
+              </div>
             </div>
 
             <div className="w-full h-[1px] bg-white/10 my-6" />
 
             <div className="contact-item opacity-0">
               <span className="text-label text-[#8A8A8A] block mb-2">Portfolio</span>
-              <a
-                href="https://drive.google.com/drive/folders/1J6J2HYjEX44uXurYqi-a15yQgUkpx9aO?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-body text-[16px] md:text-[18px] text-white hover:text-[#9EB356] transition-colors duration-300 break-all"
-              >
-                checkout portfolio
-              </a>
+              <div className="flex items-center">
+                <a
+                  href={portfolio}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-body text-[16px] md:text-[18px] text-white hover:text-[#9EB356] transition-colors duration-300 break-all"
+                >
+                  checkout portfolio
+                </a>
+                <CopyButton value={portfolio} />
+              </div>
             </div>
 
             <div className="w-full h-[1px] bg-white/10 my-6" />
 
             <div className="contact-item opacity-0">
               <span className="text-label text-[#8A8A8A] block mb-2">Phone</span>
-              <a
-                href="tel:+923044010669"
-                className="font-body text-[16px] md:text-[18px] text-white hover:text-[#9EB356] transition-colors duration-300"
-              >
-                +92 304 4010669
-              </a>
+              <div className="flex items-center">
+                <a
+                  href={`https://wa.me/${whatsappNumber}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-body text-[16px] md:text-[18px] text-white hover:text-[#9EB356] transition-colors duration-300"
+                  title="Open WhatsApp"
+                >
+                  {phone}
+                </a>
+                <CopyButton value={phone} />
+              </div>
             </div>
 
             <div className="w-full h-[1px] bg-white/10 my-6" />
