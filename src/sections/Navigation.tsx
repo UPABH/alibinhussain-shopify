@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from 'react'
 import gsap from 'gsap'
 
 const NAV_LINKS = [
-  { label: 'Work', href: '#work' },
+  { label: 'Work', href: '#showcase' },
   { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
