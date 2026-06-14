@@ -154,7 +154,7 @@ export default function Hero() {
       <div className="md:hidden absolute inset-0 z-0 opacity-20">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/portrait.jpg)' }}
+          style={{ backgroundImage: 'url(/portrait.png)' }}
         />
         <div
           className="absolute inset-0"
