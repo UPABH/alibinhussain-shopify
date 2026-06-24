@@ -77,9 +77,12 @@ export default function Hero() {
       {/* Text content - left side */}
       <div className="relative z-10 w-full md:w-[55%] px-6 md:px-0 md:pl-[8vw] py-20 md:py-0">
         {/* Label */}
-        <div ref={labelRef} className="opacity-0 flex items-center gap-3 mb-8">
-          <div className="w-[1px] h-5 bg-[#9EB356]" />
-          <span className="text-label text-[#8A8A8A]">SENIOR SHOPIFY DEVELOPER</span>
+        <div ref={labelRef} className="opacity-0 flex items-start gap-3 mb-8">
+          <div className="w-[1px] h-10 bg-[#9EB356] mt-0.5" />
+          <div className="flex flex-col gap-0.5">
+            <span className="text-label text-[#8A8A8A]">SENIOR SHOPIFY DEVELOPER</span>
+            <span className="text-label text-[#8A8A8A]">FULL STACK DEVELOPER</span>
+          </div>
         </div>
 
         {/* H1 */}

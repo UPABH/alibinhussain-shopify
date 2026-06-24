@@ -1,6 +1,7 @@
 import DotGridCanvas from './sections/DotGridCanvas'
 import Navigation from './sections/Navigation'
 import Hero from './sections/Hero'
+import TechStack from './sections/TechStack'
 import TextScrollBand from './sections/TextScrollBand'
 import WebsiteShowcase from './sections/WebsiteShowcase'
 import Skills from './sections/Skills'
@@ -26,6 +27,7 @@ export default function App() {
       {/* Main content */}
       <main className="relative" style={{ zIndex: 1 }}>
         <Hero />
+        <TechStack />
         <TextScrollBand />
         <WebsiteShowcase />
         <Skills />

@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger)
 const TIMELINE_ENTRIES = [
   {
     company: 'Studio Ojo',
-    role: 'Senior Shopify Developer',
+    role: 'Full Stack Developer',
     period: 'Feb 2026 – Present',
     description: 'Handling 5+ Shopify Plus stores. Custom theme development, high-converting product pages, seamless app & API integrations.',
   },
